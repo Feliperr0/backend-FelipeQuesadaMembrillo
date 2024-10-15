@@ -10,7 +10,10 @@
     "dataUsers": "node ./models/data/users.js",
     "dataAutos": "node ./models/data/autos.js",
     "dataPokemons": "node ./models/data/pokemons.js",
-    "dataProcessors": "node ./models/data/processors.js"
+    "dataTiendas": "node ./models/data/tiendas.js",
+    "dataProcessors": "node ./models/data/processors.js",
+    "dataProductos": "node ./models/data/productos.js",
+    "dataEmpleados": "node ./models/data/empleados.js"
   },
   "keywords": [],
   "author": "",
