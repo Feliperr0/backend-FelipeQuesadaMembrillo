@@ -15,5 +15,16 @@ let createEmpleado = async (req, res) => {
     }
 }
 
+let createEmpleados = async (req, res) => {
+    try {
+        let empleados = req.body;
+        let nuevosEmpleados = await Empleado.insertMany(empleados);
+        return res.status(201).json({ response: nuevosEmpleados });
+    } catch (error) {
+        return res.status(500).json({ response: error.message });
+    }
+}
 
-export {createEmpleado}
+
+
+export {createEmpleado, createEmpleados}

@@ -15,5 +15,15 @@ let createTienda = async (req, res) => {
     }
 }
 
+let createTiendas = async (req, res) => {
+    try {
+        let tiendas = req.body;
+        let nuevasTiendas = await Tienda.insertMany(tiendas);
+        return res.status(201).json({ response: nuevasTiendas });
+    } catch (error) {
+        return res.status(500).json({ response: error.message });
+    }
+}
 
-export {createTienda}
+
+export {createTienda, createTiendas}

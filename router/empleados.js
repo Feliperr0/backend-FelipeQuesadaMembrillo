@@ -6,7 +6,7 @@ import {empleadosSalarioAlto,
 
 } from "../controllers/empleados/read.js";
 
-import { createEmpleado } from "../controllers/empleados/create.js";
+import { createEmpleado, createEmpleados } from "../controllers/empleados/create.js";
 
 const router = Router();
 
@@ -24,6 +24,7 @@ router.get('/salario/alto', empleadosSalarioAlto);
 
 router.post('/createEmpleado',createEmpleado)
 
+router.post('/createEmpleados', createEmpleados)
 
 
 export default router;
