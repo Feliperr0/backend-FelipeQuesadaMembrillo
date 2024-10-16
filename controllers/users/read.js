@@ -27,4 +27,18 @@ let userByRole = async (req, res) => {
     }
 }
 
-export { allUser, userByRole };
+let userById = async (req, res) => {
+    try {
+        let idQuery = req.params.id;
+        let all = await User.findById(idQuery);
+        return res.status(200).json({
+            response: all
+        });
+    } catch (error) {
+        return res.status(500).json({
+            response: error
+        });
+    }
+}
+
+export { allUser, userByRole, userById };
