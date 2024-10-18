@@ -1,6 +1,6 @@
 import Tienda from "../../models/Tienda.js";
 
-let createTienda = async (req, res) => {
+let crearTienda = async (req, res) => {
     try {
         let tienda = req.body
         let createTienda = await Tienda.create(tienda)
@@ -8,22 +8,20 @@ let createTienda = async (req, res) => {
             response: createTienda
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        });
+        next(error)
         
     }
 }
 
-let createTiendas = async (req, res) => {
+let crearTiendas = async (req, res) => {
     try {
         let tiendas = req.body;
         let nuevasTiendas = await Tienda.insertMany(tiendas);
         return res.status(201).json({ response: nuevasTiendas });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 }
 
 
-export {createTienda, createTiendas}
+export {crearTienda, crearTiendas}

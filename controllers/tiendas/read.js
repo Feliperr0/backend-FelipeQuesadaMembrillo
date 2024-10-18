@@ -6,7 +6,7 @@ let todasLasTiendas = async (req, res) => {
         let all = await Tienda.find();
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -17,7 +17,7 @@ let TiendaPorRegion = async (req, res) => {
         let all = await Tienda.find({ region: regionQuery });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -28,7 +28,7 @@ let TiendaPorPais = async (req, res) => {
         let all = await Tienda.find({ pais: paisQuery });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 

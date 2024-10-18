@@ -5,7 +5,7 @@ let todosLosEmpleados = async (req, res) => {
         let all = await Empleado.find();
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -14,7 +14,7 @@ let empleadosSalarioBajo = async (req, res) => {
         let all = await Empleado.find({ salario: { $gte: 0, $lt: 30000 } });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -23,7 +23,7 @@ let empleadosSalarioAlto = async (req, res) => {
         let all = await Empleado.find({ salario: { $gte: 30000, $lt: 50000 } });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -33,7 +33,7 @@ let empleadoPorCargo = async (req, res) => {
         let all = await Empleado.find({ cargo: { $regex: new RegExp(cargoQuery, 'i') } });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 

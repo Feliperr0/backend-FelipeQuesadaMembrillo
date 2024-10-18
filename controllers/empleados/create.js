@@ -1,30 +1,28 @@
 import Empleado from "../../models/Empleado.js";
 
-let createEmpleado = async (req, res) => {
+let crearEmpleado = async (req, res) => {
     try {
         let empleado = req.body
-        let createEmpleado = await Empleado.create(empleado)
+        let crearEmpleado = await Empleado.create(empleado)
         return  res.status(201).json({
-            response: createEmpleado
+            response: crearEmpleado
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        });
+        next(error)
         
     }
 }
 
-let createEmpleados = async (req, res) => {
+let crearEmpleados = async (req, res) => {
     try {
         let empleados = req.body;
         let nuevosEmpleados = await Empleado.insertMany(empleados);
         return res.status(201).json({ response: nuevosEmpleados });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 }
 
 
 
-export {createEmpleado, createEmpleados}
+export {crearEmpleado, crearEmpleados}

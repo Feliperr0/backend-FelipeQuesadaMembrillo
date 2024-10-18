@@ -6,7 +6,7 @@ let todosLosProductos = async (req, res) => {
         let all = await Producto.find();
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -17,7 +17,7 @@ let productoPorTipo = async (req, res) => {
         let all = await Producto.find({ tipo: { $regex: new RegExp(tipoQuery, 'i') } });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -28,7 +28,7 @@ let productoPorMarca = async (req, res) => {
         let all = await Producto.find({ marca: { $regex: new RegExp(marcaQuery, 'i') } }); //funcionalidades de mongo
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -39,7 +39,7 @@ let productosOrdenMayorAMenor = async (req, res) => {
         let all = await Producto.find().sort({ precio: -1 });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
@@ -49,7 +49,7 @@ let productosOrdenMenorAMayor = async (req, res) => {
         let all = await Producto.find().sort({ precio: 1 });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 

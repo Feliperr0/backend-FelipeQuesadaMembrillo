@@ -6,7 +6,9 @@ import {empleadosSalarioAlto,
 
 } from "../controllers/empleados/read.js";
 
-import { createEmpleado, createEmpleados } from "../controllers/empleados/create.js";
+import { crearEmpleado, crearEmpleados } from "../controllers/empleados/create.js";
+
+import validar_campos from "../middlewares/validar_campos.js";
 
 const router = Router();
 
@@ -19,12 +21,11 @@ router.get('/cargo/:cargo', empleadoPorCargo);
 
 router.get('/salario/bajo', empleadosSalarioBajo);
 
-
 router.get('/salario/alto', empleadosSalarioAlto);
 
-router.post('/createEmpleado',createEmpleado)
+router.post('/crearempleado', validar_campos(['nombre', 'cargo', 'salario']),crearEmpleado)
 
-router.post('/createEmpleados', createEmpleados)
+router.post('/crearempleados', validar_campos(['nombre', 'cargo', 'salario']), crearEmpleados)
 
 
 export default router;
