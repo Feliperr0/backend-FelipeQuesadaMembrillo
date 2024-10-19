@@ -1,6 +1,6 @@
 import Empleado from "../../models/Empleado.js";
 
-let crearEmpleado = async (req, res) => {
+let crearEmpleado = async (req, res, next) => {
     try {
         let empleado = req.body
         let crearEmpleado = await Empleado.create(empleado)
@@ -13,7 +13,7 @@ let crearEmpleado = async (req, res) => {
     }
 }
 
-let crearEmpleados = async (req, res) => {
+let crearEmpleados = async (req, res, next) => {
     try {
         let empleados = req.body;
         let nuevosEmpleados = await Empleado.insertMany(empleados);

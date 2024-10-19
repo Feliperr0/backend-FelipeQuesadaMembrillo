@@ -6,6 +6,7 @@ import morgan from "morgan";
 import indexRouter from './router/index.js'
 import not_found_handler from "./middlewares/not_found_handler.js";
 import error_handler from "./middlewares/error_handler.js";
+import bad_request from "./middlewares/bad_request.js";
 
 const server = express()
 
@@ -20,10 +21,13 @@ server.use(morgan('dev'))
 
 // router 
 server.use('/api', indexRouter)
+
 server.use(not_found_handler)
 server.use(error_handler)
+server.use(bad_request)
 
 server.listen(PORT, ready)
+
 
 
 

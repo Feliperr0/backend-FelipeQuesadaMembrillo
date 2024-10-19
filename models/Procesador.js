@@ -17,6 +17,8 @@ let schema = new Schema({
     timestamps: true
 });
 
-let Processor = model(collection, schema);
+let Procesador = model(collection, schema);
 
-export default Processor
+export default Procesador
+
+

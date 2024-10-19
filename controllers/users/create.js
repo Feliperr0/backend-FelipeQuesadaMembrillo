@@ -14,7 +14,7 @@ let create = async (req, res,next) => {
 }
 
 
-let createUsers = async (req, res) => {
+let createUsers = async (req, res, next) => {
     try {
         let user = req.body;
         let newUser = await User.insertMany(user);

@@ -11,7 +11,7 @@ let allUser = async (req, res, next) => {
     }
 }
 
-let userByRole = async (req, res) => {
+let userByRole = async (req, res, next) => {
     try {
         let roleQuery = req.params.x;
         let all = await User.find({ role: roleQuery });
