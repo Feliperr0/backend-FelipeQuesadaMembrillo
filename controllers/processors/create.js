@@ -1,7 +1,7 @@
 import Procesador from "../../models/Procesador.js";
 
 
-const crearProcesador = async (req, res) => {
+const crearProcesador = async (req, res, next) => {
     const processor = new Procesador(req.body);
     try {
       const newProcessor = await processor.save();
@@ -10,7 +10,7 @@ const crearProcesador = async (req, res) => {
       next(error)
   }
   };
-  let crearProcesadores = async (req, res) => {
+  let crearProcesadores = async (req, res, next) => {
     try {
         let procesadores = req.body;
         let nuevosProcesadores = await Procesador.insertMany(procesadores);

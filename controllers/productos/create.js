@@ -1,6 +1,6 @@
 import Producto from "../../models/Producto.js";
 
-let crearProducto = async (req, res) => {
+let crearProducto = async (req, res, next) => {
     try {
         let producto = req.body;
         let nuevoProducto = await Producto.create(producto);
@@ -13,7 +13,7 @@ let crearProducto = async (req, res) => {
 
 
 
-let crearProductos = async (req, res) => {
+let crearProductos = async (req, res, next) => {
     try {
         let productos = req.body;
         let nuevosProductos = await Producto.insertMany(productos);

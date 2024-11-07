@@ -1,6 +1,6 @@
 import Empleado from "../../models/Empleado.js";
 
-let todosLosEmpleados = async (req, res) => {
+let todosLosEmpleados = async (req, res,next) => {
     try {
         let all = await Empleado.find();
         return res.status(200).json({ response: all });
@@ -9,7 +9,7 @@ let todosLosEmpleados = async (req, res) => {
     }
 };
 
-let empleadosSalarioBajo = async (req, res) => {
+let empleadosSalarioBajo = async (req, res,next) => {
     try {
         let all = await Empleado.find({ salario: { $gte: 0, $lt: 30000 } });
         return res.status(200).json({ response: all });
@@ -18,7 +18,7 @@ let empleadosSalarioBajo = async (req, res) => {
     }
 };
 
-let empleadosSalarioAlto = async (req, res) => {
+let empleadosSalarioAlto = async (req, res, next) => {
     try {
         let all = await Empleado.find({ salario: { $gte: 30000, $lt: 50000 } });
         return res.status(200).json({ response: all });
@@ -27,7 +27,7 @@ let empleadosSalarioAlto = async (req, res) => {
     }
 };
 
-let empleadoPorCargo = async (req, res) => {
+let empleadoPorCargo = async (req, res, next) => {
     try {
         let cargoQuery = req.params.cargo.toLowerCase();
         let all = await Empleado.find({ cargo: { $regex: new RegExp(cargoQuery, 'i') } });

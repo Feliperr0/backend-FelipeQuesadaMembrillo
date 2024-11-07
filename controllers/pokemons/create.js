@@ -1,6 +1,6 @@
 import Pokemon from "../../models/Pokemon.js";
 
-let crearPokemon = async (req, res) => {
+let crearPokemon = async (req, res, next) => {
     try {
         let pokemon = req.body;
         let nuevoPokemon = await Pokemon.create(pokemon);
@@ -12,7 +12,7 @@ let crearPokemon = async (req, res) => {
 };
 
 
-let crearPokemons = async (req, res) => {
+let crearPokemons = async (req, res, next) => {
     try {
         let pokemons = req.body;
         let nuevosPokemons = await Pokemon.insertMany(pokemons);

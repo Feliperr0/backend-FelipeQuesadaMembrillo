@@ -1,7 +1,7 @@
 import Pokemon from "../../models/Pokemon.js";
 
 
-let todosLosPokemons = async (req, res) => {
+let todosLosPokemons = async (req, res, next) => {
     try {
         let all = await Pokemon.find();
         return res.status(200).json({ response: all });
@@ -11,7 +11,7 @@ let todosLosPokemons = async (req, res) => {
     }
 };
 
-let pokemonPorTipo = async (req, res) => {
+let pokemonPorTipo = async (req, res, next) => {
     try {
         let tipoQuery = req.params.tipo.toLowerCase();
         let all = await Pokemon.find({ type: { $regex: new RegExp(tipoQuery, 'i') } });
@@ -22,7 +22,7 @@ let pokemonPorTipo = async (req, res) => {
     }
 };
 
-let pokemonPorHabitat= async (req, res) => {
+let pokemonPorHabitat= async (req, res, next) => {
     try {
         let habitatQuery = req.params.habitat.toLowerCase();
         let all = await Pokemon.find({ habitat: { $regex: new RegExp(habitatQuery, 'i') } });
