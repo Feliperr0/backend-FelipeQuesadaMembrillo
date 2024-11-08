@@ -1,19 +1,17 @@
 import User from "../../models/User.js";
 
-let allUser = async (req, res) => {
+let allUser = async (req, res, next) => {
     try {
         let all = await User.find();
         return res.status(200).json({
             response: all
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        });
+        next(error)
     }
 }
 
-let userByRole = async (req, res) => {
+let userByRole = async (req, res, next) => {
     try {
         let roleQuery = req.params.x;
         let all = await User.find({ role: roleQuery });
@@ -21,10 +19,20 @@ let userByRole = async (req, res) => {
             response: all
         });
     } catch (error) {
-        return res.status(500).json({
-            response: error
-        });
+        next(error)
     }
 }
 
-export { allUser, userByRole };
+let userById = async (req, res) => {
+    try {
+        let idQuery = req.params.id;
+        let all = await User.findById(idQuery);
+        return res.status(200).json({
+            response: all
+        });
+    } catch (error) {
+        next(error)
+    }
+}
+
+export { allUser, userByRole, userById };

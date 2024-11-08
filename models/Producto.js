@@ -14,3 +14,4 @@ let schema = new Schema({
 let Producto = model(collection, schema);
 
 export default Producto;
+

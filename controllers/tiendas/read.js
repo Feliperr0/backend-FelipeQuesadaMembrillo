@@ -1,34 +1,33 @@
 import Tienda from "../../models/Tienda.js";
 
-// Obtener todas las tiendas
-let todasLasTiendas = async (req, res) => {
+
+let todasLasTiendas = async (req, res, next) => {
     try {
         let all = await Tienda.find();
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
-// Obtener tiendas por región
-let TiendaPorRegion = async (req, res) => {
+let TiendaPorRegion = async (req, res, next) => {
     try {
         let regionQuery = req.params.region;
         let all = await Tienda.find({ region: regionQuery });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
-// Obtener tiendas por país
-let TiendaPorPais = async (req, res) => {
+
+let TiendaPorPais = async (req, res, next) => {
     try {
         let paisQuery = req.params.pais;
         let all = await Tienda.find({ pais: paisQuery });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 

@@ -1,55 +1,52 @@
 import Producto from "../../models/Producto.js";
 
-// Obtener todos los productos
-let todosLosProductos = async (req, res) => {
+
+let todosLosProductos = async (req, res, next) => {
     try {
         let all = await Producto.find();
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
-// Obtener productos por tipo
-let productoPorTipo = async (req, res) => {
+let productoPorTipo = async (req, res, next) => {
     try {
-        let tipoQuery = req.params.tipo.toLowerCase();
-        let all = await Producto.find({ tipo: { $regex: new RegExp(tipoQuery, 'i') } });
-        return res.status(200).json({ response: all });
+        let tipoQuery = req.params.tipo.toLowerCase(); //vamos a normalizar el texto
+        let all = await Producto.find({ tipo: { $regex: new RegExp(tipoQuery, 'i') } }); //ahora con esta funcion de mongo
+        return res.status(200).json({ response: all });                               //vamos a buscar valores que coincidan
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
-// Obtener productos por marca
-let productoPorMarca = async (req, res) => {
+let productoPorMarca = async (req, res, next) => {
     try {
         let marcaQuery = req.params.marca.toLowerCase();
-        let all = await Producto.find({ marca: { $regex: new RegExp(marcaQuery, 'i') } });
+        let all = await Producto.find({ marca: { $regex: new RegExp(marcaQuery, 'i') } }); //funcionalidades de mongo
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
 
-// Ordenar productos por precio (de mayor a menor)
-let productosOrdenMayorAMenor = async (req, res) => {
+let productosOrdenMayorAMenor = async (req, res, next) => {
     try {
         let all = await Producto.find().sort({ precio: -1 });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
-// Ordenar productos por precio (de menor a mayor)
-let productosOrdenMenorAMayor = async (req, res) => {
+
+let productosOrdenMenorAMayor = async (req, res, next) => {
     try {
         let all = await Producto.find().sort({ precio: 1 });
         return res.status(200).json({ response: all });
     } catch (error) {
-        return res.status(500).json({ response: error.message });
+        next(error)
     }
 };
 
