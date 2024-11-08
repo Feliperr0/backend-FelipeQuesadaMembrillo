@@ -1,22 +1,15 @@
 import { Schema, model } from "mongoose";
 
-let collection = 'pokemons'
+let collection = 'tiendas';
 
 let schema = new Schema({
-    name: { type: String, required: true },
-    type: { type: String, required: true },
-    level: { type: Number, required: true },
-    height: { type: Number, required: true },
-    weight: { type: Number, required: true },
-    abilities: { type: [String], required: true },
-    baseExperience: { type: Number, required: true },
-    habitat: { type: String, required: true },
-    region: { type: String, required: true },
-    evolutions: { type: [String], required: true }
+    nombre: { type: String, required: true },
+    direccion: { type: String, required: true },
+    telefono: { type: Number, required: true }
 }, {
     timestamps: true
 });
 
-let Pokemon = model(collection, schema);
+let Tienda = model(collection, schema);
 
-export default Pokemon
+export default Tienda;

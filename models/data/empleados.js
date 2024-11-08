@@ -1,5 +1,3 @@
-
-
 import "dotenv/config.js"
 import '../../config/database.js'
 import Empleado from '../Empleado.js'
